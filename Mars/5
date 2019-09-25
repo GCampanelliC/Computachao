@@ -1,0 +1,41 @@
+.data
+msg1: .asciiz "Digite um número\n"
+neg: .asciiz "Esse número é Negativo \n"
+pos: .asciiz "Esse número é Positivo \n"
+nulo: .asciiz "Esse número é Nulo \n"
+.text
+
+	li $v0,4
+	la $a0, msg1
+	syscall
+	
+	li $v0, 5
+	syscall
+	move $t0,$v0
+	
+	beqz $t0, nu
+	bgt $t0, $zero, p 
+	blt $t0, $zero, n 
+	
+nu:
+	li $v0,4
+	la $a0, nulo
+	syscall
+	j exit
+	
+p:
+	li $v0,4
+	la $a0, pos
+	syscall
+	j exit
+
+n:
+	li $v0,4
+	la $a0, neg
+	syscall
+	j exit
+	
+	
+exit:
+	li $v0, 10
+	syscall

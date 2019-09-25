@@ -1,0 +1,57 @@
+.data
+msg1: .asciiz "Qual o valor das horas?\n"
+msg2: .asciiz "Qual o valor dos minutos \n"
+a: .asciiz "\n A hora digitada convertida em minutos,é\n"
+b: .asciiz "\n O total dos minutos, é \n"
+c: .asciiz "\n O total dos minutos convertido em segundos, é\n"
+
+.text
+	li $v0,4
+	la $a0, msg1
+	syscall
+	
+	li $v0, 5
+	syscall
+	move $t0,$v0
+	
+	li $v0,4
+	la $a0, msg2
+	syscall	
+	
+	li $v0, 5
+	syscall
+	move $t1,$v0
+	
+	mul $s0, $t0, 60
+	
+	li $v0,4
+	la $a0, a
+	syscall	
+	
+	li $v0, 1
+	la $a0,($s0)
+	syscall 
+	
+	add $s1, $s0, $t1
+	
+	li $v0,4
+	la $a0, b
+	syscall	
+	
+	li $v0, 1
+	la $a0,($s1)
+	syscall 
+	
+	mul $s2, $s1, 1000
+	
+	li $v0,4
+	la $a0, c
+	syscall	
+	
+	li $v0, 1
+	la $a0,($s2)
+	syscall 
+	
+	
+li $v0, 10
+syscall

@@ -1,0 +1,9 @@
+li $s0,1 #g
+li $s1,2 #h
+
+bge  $s0,$s1, Label
+subi  $s1,$s1,1
+j Exit
+Label:addi $s0,$s0,1
+
+Exit:

@@ -1,0 +1,19 @@
+
+li $s1,5 #g
+li $s2,7 #h
+
+ #bne $s3, $s4, Else
+   #add $s0, $s1, $s2
+   #j Exit
+ 
+  #Else: sub $s0, $s1, $s2
+  
+  #Exit: 
+  
+  beq $s3, $s4, If
+    sub $s0, $s1, $s2
+    j Exit
+ 
+   If: add $s0, $s1, $s2
+  
+   Exit: 

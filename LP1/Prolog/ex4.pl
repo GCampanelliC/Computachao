@@ -1,0 +1,14 @@
+%Exercicio 4.
+nasceu(ana,brasil).
+nasceu(yves,frança).
+
+idioma(brasil,portugues).
+idioma(frança,frances).
+idioma(inglaterra,ingles).
+
+estudou(ana,frances).
+estudou(ana,ingles).
+estudou(yves,ingles).
+
+fala(A,C) :- nasceu(A,B), idioma(B,C).
+fala(D,E) :- estudou(D,E).

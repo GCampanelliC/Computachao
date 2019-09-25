@@ -1,0 +1,9 @@
+li $s0, 2
+li $s1, 3
+
+beq $s0,$s1,if
+addi $s1,$s1,1
+j Sair
+if : addi $s0,$s0,1
+
+Sair:

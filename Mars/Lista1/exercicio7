@@ -1,0 +1,21 @@
+li $s0, 10 #a
+li $s1, 10 #b
+li $s3, 6
+li $s4, 8
+li $s5, 12
+
+mul $t0,$s0,$s0 # a²
+mul $t5,$s1,$s1 # b²
+mul $t1,$t0,$s0 # a³
+
+mul $t7,$t5,$s1 # b³
+mul $t2,$s3,$t0 #6a²
+mul $t4,$s5,$s0 # 12a
+
+mul $t3,$t2,$s1 #6a²b
+mul $t6,$t4,$t5 # 12ab²
+mul $t8,$s4,$t7 # 8b³
+
+add $s2,$t1,$t3 # a³+6a²b
+add $s2,$s2,$t6 # a³+6a²b+12ab²
+add $s2,$s2,$t8 # a³+6a²b+12ab²+8b³

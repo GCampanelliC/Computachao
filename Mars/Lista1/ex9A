@@ -1,0 +1,9 @@
+li $s0,3 #g
+li $s1,2 #h
+
+bgt $s0,$s1, Label
+sub $s0,$s0,$s1
+j Exit
+Label:add $s0,$s0,$s1
+
+Exit:

@@ -1,0 +1,9 @@
+li $s1,7 #nota aluno
+li $t0,6
+
+
+	bge $s1,$t0, Ap
+	li $s1, 0
+	j Exit
+	Ap: li $s1, 1
+	Exit:

@@ -1,0 +1,18 @@
+
+.data
+vetor: .word  2, 3, 4, 1, 7, 6, -1, 9, -2, 0
+
+	.text
+	la $s0,0	
+	li $t2,0
+		
+	loop:
+	lw $t1, vetor($s0) 
+	add $t2,$t2,$t1
+	beqz $t1, exit	   
+	addi $s0, $s0, 4   
+	j loop
+	
+	exit:	
+		
+	

@@ -1,0 +1,11 @@
+ li $s0, 10 #a
+ li $s1, 10 #b
+ li $s2, 10 #c
+ li $s3, 10 #d
+ 
+ sub $t0,$s0,$s1 #(a-b) no $t0
+ add $t0,$t0,$s1 # $t0 (a-b)+b
+ sub $t0,$t0,$s2 # [b+(a-b)-c]
+ sub $t0,$s3,$t0 # {d-[b+(a-b)-c]
+ add $t0,$t0,$s0 # {d-[b+(a-b)-c]+a}
+ add $s0,$t0,$s3 # a={d-[b+(a-b)-c]+a}+d
