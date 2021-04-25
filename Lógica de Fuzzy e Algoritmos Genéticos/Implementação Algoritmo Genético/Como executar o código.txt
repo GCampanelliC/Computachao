@@ -1,0 +1,3 @@
+1 - Opção de abrir o "ag.js" em alguma IDE
+2 - Copiar o código no TXT e executar em algum compilador
+2 - Compilador online recomendavel : https://jsfiddle.net/c31sg6om/1/

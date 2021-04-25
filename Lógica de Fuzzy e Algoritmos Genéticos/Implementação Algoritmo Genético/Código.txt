@@ -1,0 +1,139 @@
+var objective = 45;
+var maxGerations = 50;
+var iterator = 0;
+var genesis = [];
+var maxCromons = 10;
+var maxInterval = 100;
+
+function cromonStruct()
+{
+	this.number = null;
+	this.pontuation = null;
+}
+
+for(var i = 0; i < maxCromons; i++)
+{
+	var newCromon = new cromonStruct();
+	newCromon.number = Math.floor((Math.random() * maxInterval) + 1)
+	genesis.push( newCromon );
+}
+
+
+var algoritmoGenetico =
+{
+	init:function( population )
+	{
+		var self  = this;
+		self.setup( population );
+	},
+	setup:function( population )
+	{
+		var self  = this;
+		if(iterator < maxGerations)
+			self.geneticArc( population );
+		else
+			self.showResult( population )
+	}, 
+	adequationArc:function( cromon )
+	{
+		var self = this;
+
+		var diff = objective - cromon.number;
+		if(diff < 0)
+			diff = diff*-1;
+
+		cromon.pontuation = 100 - diff;
+		return cromon.pontuation;
+
+	},
+	geneticArc:function( population )
+	{
+		var self = this;
+		var newPopulation =  [];
+		var maxPontuation = 0;
+
+		
+		for(var i = 0; i <  population.length; i++)
+		{
+			var cromon  =  population[i];
+			maxPontuation += self.adequationArc( cromon );
+		}
+
+		population.sort(function (a, b) {
+		  	if (a.pontuation > b.pontuation) {
+		    	return -1;
+		  	}
+		  	if (a.pontuation < b.pontuation) {
+		    	return 1;
+		  	}
+		  	return 0;
+		})
+
+		if(iterator < maxGerations && population[0].number != objective)
+		{
+
+			newPopulation.push(population[0]);
+			newPopulation.push(population[1]);
+
+
+
+			for(var i = 0; i < (maxCromons-2); i++)
+			{
+			
+				var father = self.getParents( population, maxPontuation );
+				
+				var mother = self.getParents( population, maxPontuation, father ); 
+				var newCromon = new cromonStruct();
+	
+				var randMutation = Math.floor((Math.random()*100)+1);
+				if(randMutation == 1)
+				{
+					newCromon.number = Math.floor((Math.random() * maxInterval) + 1)
+					console.log("MUTAÇÃO!!!  Sentinelas:[ON]");
+				}
+				else 
+				{
+					console.log("Pai:"+father.number)
+					console.log("Mãe: "+mother.number)
+					newCromon.number = Math.floor((father.number + mother.number)/2);
+				}
+				newPopulation.push(newCromon);
+			}
+			iterator++;
+			self.geneticArc( newPopulation );
+		}
+		else
+		{
+			self.showResult( population );
+		}
+
+	},
+	getParents:function( population, maxPontuation, father )
+	{
+		var self = this;
+		var rand = Math.floor((Math.random() * maxPontuation)+1);
+		var max = 0;
+		for(var i = 0; i < population.length; i++)
+		{
+			max += population[i].pontuation;
+			if(rand <= max)
+			{
+				if(father && population[i] == father)
+				{
+					return self.getParents(population, maxPontuation, father);
+				}
+				else
+				{
+					return population[i];
+				}
+			}
+		}
+	},
+	showResult:function( population )
+	{
+		console.log( "Individuo máximo: "+population[0].number+"\nNúmero de Interações: " + iterator+"\nPontuação: "+population[0].pontuation )
+	}
+}
+
+var newAg = Object.create( algoritmoGenetico );
+newAg.init( genesis )

@@ -1,0 +1,4 @@
+1 Baixe o Zip;
+2 Extraia o contéudo;
+3 Abrir em PyCharm IDE;
+4 Execute o arquivo main.py que está em Logica-Fuzzy/main.py.
