@@ -1,0 +1,65 @@
+1)
+
+	ALGORITMO crianca_esperança
+	DECLARE
+	    v,op:inteiro
+        INICIO
+	      ESCREVA("Menu de doacao")
+	      ESCREVA("1-para doar R$5,00")
+	      ESCREVA("2-para doar R$10,00")
+	      ESCREVA("3-para doar R$20,00")
+              ESCREVA("4-para doar qualquer valor")
+              ESCREVA("Escolha sua opcao")
+              LEIA(op)
+              
+              CASO op SEJA:
+	           1:
+                    	ESCREVA("A doacao de R$5,00 foi realizada com sucesso!")
+                   2:
+	            	ESCREVA("A doacao de R$10,00 foi realizada com sucesso!")
+		   3:
+		    	ESCREVA("A doacao de R$20,00 foi realizada com sucesso!")
+		   4:
+		    	ESCREVA("Digite o valor que deseja doar!")
+                    	leia(v)
+                    	ESCREVA("A doacao de R$",v,",00 foi realizada com sucesso!")
+                   default:
+                    	ESCREVA("Opcao invalida")
+	     FIMCASO
+        FIM
+
+2)
+	ALGORITMO salario
+	DECLARE
+	    op:inteiro
+	    sal,bru:real
+        INICIO
+	      ESCREVA("Digite seu salario")
+              LEIA(sal)
+	      ESCREVA("Menu de Dependentes")
+	      ESCREVA("1-Um Dependente")
+	      ESCREVA("2-Dois Dependentes")
+	      ESCREVA("3-Tres Dependentes")
+              ESCREVA("4-Quatro ou mais Dependentes")
+              ESCREVA("Escolha sua opcao")
+              LEIA(op)
+	      
+              
+              CASO op SEJA:
+	           1:
+                       bru <- (sal*0.05);
+                       ESCREVA("O valor total bruto será R$", bru);
+                   2:
+	            	bru <- (sal*0.09);
+                       ESCREVA("O valor total bruto será R$", bru);
+		   3:
+		    	bru <- (sal*0.12);
+                       ESCREVA("O valor total bruto será R$", bru);
+		   4:
+		    	bru <- (sal*0.15);
+                       ESCREVA("O valor total bruto será R$", bru);
+                   default:
+                    	ESCREVA("Opcao invalida")
+	     FIMCASO
+        FIM
+	
